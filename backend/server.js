@@ -7,7 +7,8 @@ import connectToMongo from "./db/connectmongo.js";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import { VerifyUser } from "./middleware/verifyUser.js";
-const app = express()
+import { app, server } from "./socket/socket.js"
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 dotenv.config();
@@ -22,7 +23,7 @@ app.use("/api/auth",authRoute)
 app.use("/api/messages",messageRoute)
 app.use("/api/user",userRoute)
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     connectToMongo();
     console.log(`app is listening at port ${PORT}`)
 })

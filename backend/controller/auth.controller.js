@@ -12,10 +12,11 @@ export const signup= async (req,res)=>{
      if(user){
         return res.status(400).json({error:"username Already Exists"})
      }
-    const boyProfilePic=`https://avatar.iran.liara.run/public/boy/username?username=${username}`
-    const girlProfilePic=`https://avatar.iran.liara.run//public/girl/username?username=${username}`
+    const boyProfilePic=`https://avatar.iran.liara.run/public/boy?username=${username}`
+    const girlProfilePic=`https://avatar.iran.liara.run/public/girl?username=${username}`
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password,salt)
+
     const newUser= new User({
         fullName,
         username,

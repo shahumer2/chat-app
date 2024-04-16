@@ -1,40 +1,32 @@
 import React from 'react'
+import { AuthContext } from '../../context/AuthContext'
+import useConversation from '../../Zustand/UseConversation';
+import { extractTime } from '../../utils/ExtractTime';
 
-const Message = () => {
+const Message = ({ message }) => {
+  const authUser = React.useContext(AuthContext);
+  const { selectedConversation } = useConversation();
+  const fromMe = authUser.authUser._id === message?.SenderId;
+  console.log(authUser,"frommmmmmmm");
+  
+  const chatClassName = fromMe ? "chat-end" : "chat-start"; // Corrected class assignment
+  const profilePic = fromMe ? authUser.authUser.profilePic : selectedConversation.profilePic;
+  const bubbleColor = fromMe ? "bg-blue-500" : "bg-gray-600"; // Adjusted bubble color
+  const formattedTime = extractTime(message.createdAt);
+const shakeClass = message.shouldShake?"shake":""
   return (
-    <div className='overflow-auto'>
-      <div className="chat chat-start">
-  <div className="chat-image avatar">
-    <div className="w-10 rounded-full">
-      <img alt="Tailwind CSS chat bubble component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+    <div className={`chat ${chatClassName}`}>
+      <div className="chat-image avatar">
+        <div className="w-10 rounded-full">
+          <img alt="User Avatar" src={profilePic} />
+        </div>
+      </div>
+      <div className={`chat-bubble ${bubbleColor} ${shakeClass}`}>
+        {message.message}
+      </div>
+      <div className='chat-footer opacity-50 text-xs flex gap-1 items-center text-slate-200'>{formattedTime}</div>
     </div>
-  </div>
-  <div className="chat-header">
-    Obi-Wan Kenobi
-    <time className="text-xs opacity-50">12:45</time>
-  </div>
-  <div className="chat-bubble">You were the Chosen One!</div>
-  <div className="chat-footer opacity-50">
-    Delivered
-  </div>
-</div>
-<div className="chat chat-end">
-  <div className="chat-image avatar">
-    <div className="w-10 rounded-full">
-      <img alt="Tailwind CSS chat bubble component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-    </div>
-  </div>
-  <div className="chat-header">
-    Anakin
-    <time className="text-xs opacity-50">12:46</time>
-  </div>
-  <div className="chat-bubble">👍!</div>
-  <div className="chat-footer opacity-50">
-    Seen at 12:46
-  </div>
-</div>
-    </div>
-  )
+  );
 }
 
-export default Message
+export default Message;
