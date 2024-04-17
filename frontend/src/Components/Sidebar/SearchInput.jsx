@@ -24,12 +24,12 @@ const SearchInput = () => {
 		} else toast.error("No such user found!");
 	};
   return (
-    <div>
-      <form onSubmit={handleSubmit} className='flex gap-2'>
-        <input type='text' placeholder='Search' className='input input-bordered rounded-full bg-gray-600 text-white' 
+    <div className='w-[20px]'>
+      <form onSubmit={handleSubmit} className='flex gap-2 w-[30px]'>
+        <input type='text' placeholder='Search' className='input input-bordered rounded-full bg-gray-600 text-white w-[90px] md:w-[300px]' 
         value={search}
 				onChange={(e) => setSearch(e.target.value)}/>
-        <button className='btn btn-circle bg-sky-400'>
+        <button className='btn btn-circle bg-sky-400 w-[20px] md:w-[50px]'>
         <FaSearch/>
         </button>
        

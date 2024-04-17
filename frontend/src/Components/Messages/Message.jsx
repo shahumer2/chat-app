@@ -17,11 +17,11 @@ const shakeClass = message.shouldShake?"shake":""
   return (
     <div className={`chat ${chatClassName}`}>
       <div className="chat-image avatar">
-        <div className="w-10 rounded-full">
+        <div className="w-7 md:w-10 rounded-full">
           <img alt="User Avatar" src={profilePic} />
         </div>
       </div>
-      <div className={`chat-bubble ${bubbleColor} ${shakeClass}`}>
+      <div className={`chat-bubble ${bubbleColor} ${shakeClass} text-xs md:text-lg`}>
         {message.message}
       </div>
       <div className='chat-footer opacity-50 text-xs flex gap-1 items-center text-slate-200'>{formattedTime}</div>

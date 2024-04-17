@@ -12,12 +12,12 @@ const isOnline = onlineUser.includes(conversation._id)
 console.log(selectedConversation?._id,"kjbsx");
 
   return (
-    <div className={`flex p-3 items-center hover:bg-blue-500 rounded-lg cursor-pointer ${isSelected ? "bg-sky-600" : ""}`}
+    <div className={`flex p-3 items-center  hover:bg-blue-500 rounded-lg cursor-pointer ${isSelected ? "bg-sky-600" : ""}`}
 
     onClick={()=>setSelectedConversation(conversation)}
     >
-      <div className={`avatar ${isOnline?"online":""}  p-2`}>
-  <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+      <div className={`avatar ${isOnline?"online":""}  p-1 md:p-2`}>
+  <div className="w-7 md:w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
     <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
   </div>
 </div>

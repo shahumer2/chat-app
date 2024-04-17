@@ -55,3 +55,29 @@ body {
 		transform: translate3d(4px, 0, 0);
 	}
 }
+@media screen and (max-width: 768px) {
+    body {
+      font-size: 14px; /* Adjust the font size */
+    }
+  
+    .p-4 {
+      padding: 2rem; /* Adjust the padding */
+    }
+  
+    .h-screen {
+      height: 100vh; /* Adjust the height */
+    }
+  
+    .flex {
+      display: flex;
+    }
+  
+    .justify-center {
+      justify-content: center;
+    }
+  
+    .items-center {
+      align-items: center;
+    }
+  }
+  

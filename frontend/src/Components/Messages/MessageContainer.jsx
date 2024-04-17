@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
-import Messages from './Messages'
-import MessageInput from './MessageInput'
-import { TiMessages } from "react-icons/ti";
+import React, { useEffect } from 'react';
+import Messages from './Messages';
+import MessageInput from './MessageInput';
+import { TiMessages } from 'react-icons/ti';
 import useConversation from '../../Zustand/UseConversation';
-import { AuthContext, useAuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const MessageContainer = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
-console.log(selectedConversation,"hbcsbh");
+
   useEffect(() => {
     async function resetSelectedConversation() {
       try {
@@ -21,7 +21,7 @@ console.log(selectedConversation,"hbcsbh");
   }, [setSelectedConversation]);
 
   return (
-    <div className='flex flex-col md:min-w-[500px]'>
+    <div className='flex flex-col w-[520px] md:min-w-[500px] overflow-auto h-[630px] md:h-full sm:h-[250px] '>
       {!selectedConversation ? <NoChatSelected /> : (
         <>
           <div className='bg-slate-500 px-4 mx-5 h-12'>
@@ -33,8 +33,8 @@ console.log(selectedConversation,"hbcsbh");
         </>
       )}
     </div>
-  )
-}
+  );
+};
 
 const NoChatSelected = () => {
   const authUser = React.useContext(AuthContext);
