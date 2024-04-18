@@ -1,6 +1,5 @@
-import React from 'react'
-import  { createContext, useState, useEffect, useContext } from "react";
-import  { AuthContext }  from "./AuthContext";
+import React, { createContext, useState, useEffect, useContext } from "react";
+import { AuthContext } from "./AuthContext";
 import io from "socket.io-client";
 
 const SocketContext = createContext();
@@ -10,26 +9,25 @@ export const useSocketContext = () => {
 };
 
 export const SocketContextProvider = ({ children }) => {
+	const authUser = useContext(AuthContext);
 	const [socket, setSocket] = useState(null);
 	const [onlineUsers, setOnlineUsers] = useState([]);
-    const authUser = React.useContext(AuthContext);
 
 	useEffect(() => {
 		if (authUser) {
-			const socket = io("http://localhost:5000", {
+			const newSocket = io("http://localhost:5000", {
 				query: {
 					userId: authUser.authUser._id,
 				},
 			});
 
-			setSocket(socket);
+			setSocket(newSocket);
 
-			// socket.on() is used to listen to the events. can be used both on client and server side
-			socket.on("getOnlineUsers", (users) => {
+			newSocket.on("getOnlineUsers", (users) => {
 				setOnlineUsers(users);
 			});
 
-			return () => socket.close();
+			return () => newSocket.close();
 		} else {
 			if (socket) {
 				socket.close();
