@@ -12,13 +12,14 @@ export const useSocketContext = () => {
 export const SocketContextProvider=({children})=>{
 const [Socket, setSocket] = useState(null)
 const [onlineUser, setonlineUser] = useState([])
-const authUser = React.useContext(AuthContext);
+// const authUser = React.useContext(AuthContext);
+const { authUser } = AuthContext();
 
 useEffect(() => {
     if(authUser){
         const Socket =io("http://localhost:5000",{
             query:{
-                userId:authUser?.authUser._id
+                userId:authUser?.authUser?._id
             }
         })
         console.log(authUser?.authUser._id,"log from sockettt");
