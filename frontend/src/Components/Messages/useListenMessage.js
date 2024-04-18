@@ -13,7 +13,7 @@ socket?.on("newMessage",(newMessage)=>{
     sound.play();
     setmessages([...messages,newMessage])
 })
-return ()=> socket.off("newMessage")
+return ()=> socket.off("newMessage") 
 }, [setmessages,socket,messages])
 
 }
