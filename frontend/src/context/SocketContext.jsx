@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { AuthContext } from "./AuthContext";
+import  useAuthContext  from "./AuthContext";
 import io from "socket.io-client";
 
 const SocketContext = createContext();
@@ -9,7 +9,7 @@ export const useSocketContext = () => {
 };
 
 export const SocketContextProvider = ({ children }) => {
-	const authUser = useContext(AuthContext);
+	const {authUser} = useContext(useAuthContext);
 	const [socket, setSocket] = useState(null);
 	const [onlineUsers, setOnlineUsers] = useState([]);
 
