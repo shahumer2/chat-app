@@ -3,13 +3,13 @@ import Message from './Message.jsx';
 import UseGetMessages from './UseGetMessages';
 import useConversation from '../../Zustand/UseConversation';
 import useListenMessage from './useListenMessage.js';
-import { useAuthContext } from "./AuthContext";
+
 
 const Messages = () => {
-  const { authUser } = useAuthContext();
+
   const { selectedConversation } = useConversation();
   const { messages } = UseGetMessages(selectedConversation);
-  console.log(authUser.authUser._id,"testing prpose");
+
 useListenMessage();
   const lastMessageRef = useRef();
   console.log(messages, "htyyu");

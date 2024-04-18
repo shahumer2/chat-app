@@ -1,13 +1,13 @@
 import React from 'react'
-import { useAuthContext } from "./AuthContext";
+
 import useConversation from '../../Zustand/UseConversation';
 import { extractTime } from '../../utils/ExtractTime';
 
 const Message = ({ message }) => {
-	const { authUser } = useAuthContext();
+
   const { selectedConversation } = useConversation();
   const fromMe = authUser.authUser._id === message?.SenderId;
-console.log(authUser.authUser._id,"testing prpose");
+
   
   const chatClassName = fromMe ? "chat-end" : "chat-start"; // Corrected class assignment
   const profilePic = fromMe ? authUser.authUser.profilePic : selectedConversation.profilePic;
