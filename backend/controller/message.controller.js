@@ -49,7 +49,7 @@ export const getMessages=async(req,res)=>{
     try {
         const {id:userTochat}=req.params
         const senderId=req.user._id
-        console.log(senderId,userTochat);
+   
 
         const conversation = await Conversation.findOne({
             participants:{$all:[senderId,userTochat]},

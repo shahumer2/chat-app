@@ -8,7 +8,7 @@ export const generateToken=(userId,res)=>{
     res.cookie("jwt",token,{
         httpOnly:true,
         maxAge:30*24*60*60*1000 ,//in ms
-        secure:"developement"!=="developement"
+        secure:process.env.NODE_ENV!=="development"
     })
 
 }

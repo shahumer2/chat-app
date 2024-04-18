@@ -7,7 +7,7 @@ const Message = ({ message }) => {
   const authUser = React.useContext(AuthContext);
   const { selectedConversation } = useConversation();
   const fromMe = authUser.authUser._id === message?.SenderId;
-  console.log(authUser,"frommmmmmmm");
+
   
   const chatClassName = fromMe ? "chat-end" : "chat-start"; // Corrected class assignment
   const profilePic = fromMe ? authUser.authUser.profilePic : selectedConversation.profilePic;

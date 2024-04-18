@@ -14,7 +14,7 @@ const getCOnversation = () => {
                     throw new Error(data.error)
                 }
                 setconversation(data)
-                console.log(conversation,"juiii");
+            
                 
             } catch (error) {
                 toast.error(error)

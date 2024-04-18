@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs"
 import { generateToken } from "../utils/generateToken.js";
 export const signup= async (req,res)=>{
  try {
-    console.log(req.body);
+    
      const {username,fullName,password,confirmPassword,gender}=req.body;
      if(password!==confirmPassword){
         return res.status(400).json({error:"Password Dont Match"})

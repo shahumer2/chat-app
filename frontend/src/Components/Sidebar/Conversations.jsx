@@ -9,7 +9,7 @@ const {selectedConversation,setSelectedConversation} = useConversation();
 const isSelected =  selectedConversation?._id === conversation._id;
 const {onlineUser}= useSocketContext();
 const isOnline = onlineUser.includes(conversation._id)
-console.log(selectedConversation?._id,"kjbsx");
+
 
   return (
     <div className={`flex p-3 items-center  hover:bg-blue-500 rounded-lg cursor-pointer ${isSelected ? "bg-sky-600" : ""}`}

@@ -20,7 +20,7 @@ const SignUp = () => {
     setInputs({ ...inputs, gender });
   }
   const handleSubmit = async (e) => {
-    console.log(inputs,"maaji");
+
     e.preventDefault();
     try {
 

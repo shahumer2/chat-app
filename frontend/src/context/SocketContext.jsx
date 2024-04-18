@@ -13,14 +13,15 @@ export const SocketContextProvider=({children})=>{
 const [Socket, setSocket] = useState(null)
 const [onlineUser, setonlineUser] = useState([])
 const authUser = React.useContext(AuthContext);
-console.log(authUser,"meincontext hu");
+
 useEffect(() => {
     if(authUser){
         const Socket =io("http://localhost:5000",{
             query:{
-                userId:authUser.authUser?._id
+                userId:authUser?.authUser._id
             }
         })
+        console.log(authUser?.authUser._id,"log from sockettt");
         setSocket(Socket)
         //socket.on is used to listen to events can be sed both for client and server
         Socket.on("getOnlineUSers",(users)=>{
