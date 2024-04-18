@@ -1,16 +1,17 @@
 import React from 'react'
-
+import { useAuthContext } from "../../context/AuthContext";
 import useConversation from '../../Zustand/UseConversation';
 import { extractTime } from '../../utils/ExtractTime';
 
 const Message = ({ message }) => {
 
   const { selectedConversation } = useConversation();
-  const fromMe = authUser.authUser._id === message?.SenderId;
-
+  const { authUser } = useAuthContext();
+  console.log(authUser,"testingggg");
+  const fromMe = authUser._id === message?.SenderId;
   
   const chatClassName = fromMe ? "chat-end" : "chat-start"; // Corrected class assignment
-  const profilePic = fromMe ? authUser.authUser.profilePic : selectedConversation.profilePic;
+  const profilePic = fromMe ? authUser.profilePic : selectedConversation.profilePic;
   const bubbleColor = fromMe ? "bg-blue-500" : "bg-gray-600"; // Adjusted bubble color
   const formattedTime = extractTime(message.createdAt);
 const shakeClass = message.shouldShake?"shake":""
