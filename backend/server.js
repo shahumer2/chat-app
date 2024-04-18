@@ -27,7 +27,12 @@ app.use("/api/messages",messageRoute)
 app.use("/api/user",userRoute)
 
 // for deployement to seve as static files images an all
-
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://u-chat-app.onrender.com');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+  });
 app.use(express.static(path.join(__dirname,"/frontend/dist")))
 
 // to run frontend from server
