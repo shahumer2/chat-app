@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { createContext, useEffect, useState } from "react";
 
 import {io}from "socket.io-client"
-import { AuthContext } from "./AuthContext";
+import { useAuthContext } from "./AuthContext";
 const SocketContext = createContext();
 
 export const useSocketContext = () => {
@@ -13,7 +13,7 @@ export const SocketContextProvider=({children})=>{
 const [Socket, setSocket] = useState(null)
 const [onlineUser, setonlineUser] = useState([])
 // const authUser = React.useContext(AuthContext);
-const { authUser } = AuthContext();
+const { authUser } = useAuthContext();
 
 useEffect(() => {
     if(authUser){
